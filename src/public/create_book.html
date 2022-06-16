@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body class="main">
+
+    <form hidden action="http://localhost:3000/book/delete" method="post" name="delete" id="delete">
+    </form>
+
+    <aside>
+        <nav class="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="http://localhost:3000/users/create">Cadastrar Usuário</a></li>
+                <li><a href="http://localhost:3000/book/create">Cadastrar Livro</a></li>
+                <li><a href="http://localhost:3000/magazine/create">Cadastrar Magazine</a></li>
+                <li><a href="http://localhost:3000/minutes/create">Cadastrar Acta De Congresso</a></li>
+                <li><a href="http://localhost:3000/borrow/create">Solicitar Livro</a></li>
+
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <h1>Bem Vindo A Biblioteca Isptec</h1>
+        <div class="wrapper">
+            <div class="label-register">
+                <p>Cadastrar Livro</p>
+            </div>
+            <div class="div-register">
+                <form action="http://localhost:3000/book/create" method="post" name="frm-register">
+                    <table id="tbl-register">
+
+                        <tr>
+                            <td>Title<span>*</span></td>
+                            <td>
+                                <input type="text" name="title" id="title" placeholder="Digite o Titulo" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Ano De Publicação<span>*</span></td>
+                            <td>
+                                <input type="month" name="yearOfPublication" id="yearOfPublication" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ano De Chegada<span>*</span></td>
+                            <td>
+                                <input type="month" name="yearOfArrival" id="yearOfArrival" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Editorial<span>*</span></td>
+                            <td>
+                                <input type="text" name="editorial" id="editorial" placeholder="Digite o Editorial" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quantidade<span>*</span></td>
+                            <td>
+                                <input type="number" name="amount" id="amount"
+                                    placeholder="Digite a Quantidade De Livros" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emprestados<span>*</span></td>
+                            <td>
+                                <input type="number" name="borrowed" id="userName"
+                                    placeholder="Digite a Quantidade De Livros Emprestados" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Genéros</td>
+                            <td>
+                                <select name="gender" id="gender">
+                                    <option value="Child">Child</option>
+                                    <option value="Ciência">Ficcção Cientifica</option>
+                                    <option value="Historia">História Antiga</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="submit" name="register"> Register
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <hr />
+            <p class="label-result">Lista De Livros</p>
+            <div class="div-result">
+                <table class="tbl-result" id="tbl-result">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Title</th>
+                            <th>Ano De Publicaçã</th>
+                            <th>Ano De Chegadao</th>
+                            <th>Editorial</th>
+                            <th>Quantidade</th>
+                            <th>Emprestados</th>
+                            <th>Genéros</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in data %}
+                        <tr>
+                            <td>{{item.identifier}}</td>
+                            <th>{{item.title}}</th>
+                            <th>{{item.yearOfPublication}}</th>
+                            <th>{{item.yearOfArrival}}</th>
+                            <th>{{item.editorial}}</th>
+                            <th>{{item.amount}}</th>
+                            <th>{{item.borrowed}}</th>
+                            <th>{{item.gender}}</th>
+                            <th> <button form="delete" value="{{item.identifier}}" name="id"
+                                    type="submit">delete</button></th>
+                        </tr>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

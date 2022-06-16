@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body class="main">
+
+    <form hidden action="http://localhost:3000/users/delete" method="post" name="delete" id="delete">
+    </form>
+
+    <aside>
+        <nav class="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="http://localhost:3000/users/create">Cadastrar Usuário</a></li>
+                <li><a href="http://localhost:3000/book/create">Cadastrar Livro</a></li>
+                <li><a href="http://localhost:3000/magazine/create">Cadastrar Magazine</a></li>
+                <li><a href="http://localhost:3000/minutes/create">Cadastrar Acta De Congresso</a></li>
+                <li><a href="http://localhost:3000/borrow/create">Solicitar Livro</a></li>
+
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <h1>Bem Vindo A Biblioteca Isptec</h1>
+        <div class="wrapper">
+            <div class="label-register">
+                <p>Cadastrar Usuário</p>
+            </div>
+            <div class="div-register">
+                <form action="http://localhost:3000/users/create" method="post" name="frm-register">
+                    <table id="tbl-register">
+                        <tr>
+                            <td>Nome<span>*</span></td>
+                            <td>
+
+                                <input type="text" name="name" id="firstName" placeholder="Enter first name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cartão De Identidade<span>*</span></td>
+                            <td>
+                                <input type="text" name="bi" id="lastName" placeholder="Enter last name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Endreço<span>*</span></td>
+                            <td>
+                                <input type="text" name="address" id="userName" placeholder="Enter user name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="submit" name="register"> Register
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <hr />
+            <p class="label-result">Lista De Usuários</p>
+            <div class="div-result">
+                <table class="tbl-result" id="tbl-result">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nome</th>
+                            <th>Cartão De Identidade</th>
+                            <th>Endereço</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in data %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.bi}}</td>
+                            <td>{{item.address}}</td>
+                            <th> <button form="delete" value="{{item.bi}}" name="id" type="submit">delete</button>
+                            </th>
+                        </tr>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
