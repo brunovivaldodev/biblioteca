@@ -16,6 +16,11 @@ export default class BookController {
 
     }
 
+    findBook(id) {
+        const book = MaterialDAO.findBook(id)
+        return book
+    }
+
     index() {
         const books = MaterialDAO.findBooks()
         return books
@@ -27,8 +32,5 @@ export default class BookController {
     }
 
 
-    findBook(id) {
-        const book = MaterialDAO.findBook(id)
-        return book
-    }
+
 }

@@ -40,9 +40,7 @@ routes.post("/editar/:id", (request, response) => {
     const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender } = request.body
     const { id } = request.params
 
-
     const item = bookController.findBook(id)
-
 
     if (item) {
 
@@ -50,7 +48,6 @@ routes.post("/editar/:id", (request, response) => {
 
     }
     response.redirect("/book/create")
-
 
 
 })
