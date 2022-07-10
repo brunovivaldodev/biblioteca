@@ -17,6 +17,21 @@ export default class UserController {
     }
 
 
+    update(id, name, bi, address) {
+
+        const user = UserDAO.updateUser(id, name, bi, address)
+
+        return user;
+
+    }
+
+
+    findUser(id) {
+        const user = UserDAO.findUser(id)
+        return user
+    }
+
+
     delete(id) {
         const minutes = UserDAO.delete(id)
         return minutes
