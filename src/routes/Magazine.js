@@ -15,7 +15,6 @@ routes.post("/create", (request, response) => {
 
 routes.post("/delete", (req, res) => {
     const { id } = req.body
-    console.log(id)
     const data = magazineController.delete(id)
 
     res.render("create_magazine.html", { data })

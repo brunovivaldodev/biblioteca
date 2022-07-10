@@ -3,25 +3,17 @@ import MaterialDAO from "../daos/Material.js"
 export default class BookController {
     create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
 
-        const book = MaterialDAO.storeBook(title, yearOfPublication, yearOfArrival, editorial, Number(amount), Number(borrowed), gender)
+        const book = MaterialDAO.storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
 
         return book
     }
 
-    update(request, response) {
+    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
 
-        const { id } = request.params
+        const book = MaterialDAO.updateBook(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
 
-        const { title } = request.body
+        return book;
 
-        const bookExists = MaterialDAO.findBook(id)
-
-        if (bookExists) {
-            bookExists.title = title
-        }
-
-
-        response.status(200).json(bookExists)
     }
 
     index() {
@@ -32,5 +24,11 @@ export default class BookController {
     delete(id) {
         const minutes = MaterialDAO.deleteBook(id)
         return minutes
+    }
+
+
+    findBook(id) {
+        const book = MaterialDAO.findBook(id)
+        return book
     }
 }

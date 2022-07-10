@@ -2,12 +2,16 @@ import Book from "../models/Book.js"
 import Magazine from "../models/Magazine.js"
 import Minutes from "../models/Minutes.js"
 
-let materials = []
+let materials = [
+    new Book(1, "Codigo Limpo", "2022-03", "2011-04", 12, 16, 34, "Child"),
+    new Book(2, "Arquitectura Limpa", "2022-03", "2011-04", 12, 16, 34, "Child")
+]
+
 export default class MaterialDAO {
     static count = 0;
 
     static storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
-        const book = new Book(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
+        const book = new Book(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, Number(amount), Number(borrowed), gender)
         materials.push(book)
         this.count++
         return book
@@ -40,12 +44,21 @@ export default class MaterialDAO {
     }
 
 
-    static updateBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
+    static updateBook(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
 
-        const bookExists = materials.find(materials => materials.identifier === material.identifier && materials.title === material.title)
 
-        materials.push(book)
-        return book
+        const bookExists = this.findBooks().find(book => book.identifier == identifier)
+
+        if (bookExists) {
+            bookExists.amount = amount;
+            bookExists.borrowed = borrowed
+            bookExists.editorial = editorial
+            bookExists.gender = gender
+            bookExists.title = title
+            bookExists.yearOfArrival = yearOfArrival
+            bookExists.yearOfPublication = yearOfPublication
+        }
+        return bookExists
     }
 
     static storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
