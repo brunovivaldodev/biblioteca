@@ -99,6 +99,7 @@
                         </tr>
                     </table>
                 </form>
+
             </div>
             <hr />
             <p class="label-result">Lista De Livros</p>
@@ -129,6 +130,8 @@
                             <th>{{item.amount}}</th>
                             <th>{{item.borrowed}}</th>
                             <th>{{item.congressName}}</th>
+                            <th><a href="http://localhost:3000/minutes/editar/{{item.identifier}}">Editar</a>
+                            </th>
                             <th> <button form="delete" value="{{item.identifier}}" name="id"
                                     type="submit">delete</button></th>
                         </tr>

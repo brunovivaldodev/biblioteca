@@ -18,4 +18,18 @@ export default class MinutesController {
         return minutes
     }
 
+
+    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
+
+        const minute = MaterialDAO.updateMinute(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName)
+
+        return minute;
+
+    }
+
+    findMinute(id) {
+        const minute = MaterialDAO.findMinute(id)
+        return minute
+    }
+
 }

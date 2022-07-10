@@ -8,7 +8,7 @@ let materials = [
 ]
 
 export default class MaterialDAO {
-    static count = 0;
+    static count = 2;
 
     static storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
         const book = new Book(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, Number(amount), Number(borrowed), gender)
@@ -43,6 +43,14 @@ export default class MaterialDAO {
         return bookExists
     }
 
+    static findMagazine(id) {
+        const magazineExists = materials.find(magazine => magazine.identifier == id)
+        if (!magazineExists) {
+            return undefined
+        }
+        return magazineExists
+    }
+
 
     static updateBook(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
 
@@ -61,10 +69,28 @@ export default class MaterialDAO {
         return bookExists
     }
 
+    static updateMagazine(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
+
+        const magazineExists = this.findMagazines().find(book => book.identifier == identifier)
+
+        if (magazineExists) {
+            magazineExists.amount = amount;
+            magazineExists.borrowed = borrowed
+            magazineExists.editorial = editorial
+            magazineExists.publicationFrequency = publicationFrequency
+            magazineExists.title = title
+            magazineExists.yearOfArrival = yearOfArrival
+            magazineExists.yearOfPublication = yearOfPublication
+        }
+
+        return magazineExists
+    }
+
     static storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
         const magazine = new Magazine(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency)
         materials.push(magazine)
         this.count++
+
         return magazine
     }
 
@@ -91,9 +117,35 @@ export default class MaterialDAO {
     }
 
     static findMinutes() {
-        const minutes = materials.filter(book => book instanceof Minutes)
+        const minutes = materials.filter(minute => minute instanceof Minutes)
 
         return minutes
+    }
+
+    static updateMinute(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
+
+        const minuteExists = this.findMinutes().find(minute => minute.identifier == identifier)
+
+        if (minuteExists) {
+
+            minuteExists.amount = amount;
+            minuteExists.borrowed = borrowed
+            minuteExists.editorial = editorial
+            minuteExists.congressName = congressName
+            minuteExists.title = title
+            minuteExists.yearOfArrival = yearOfArrival
+            minuteExists.yearOfPublication = yearOfPublication
+        }
+
+        return minuteExists
+    }
+
+    static findMinute(id) {
+        const minuteExists = materials.find(minute => minute.identifier == id)
+        if (!minuteExists) {
+            return undefined
+        }
+        return minuteExists
     }
 
     static deleteMinute(id) {
