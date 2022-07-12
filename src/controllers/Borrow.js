@@ -1,6 +1,6 @@
 
-import { users as UserRepository } from "../daos/User.js"
-import { MaterialDAO, materials } from "../daos/Material.js"
+import { UserDAO } from "../daos/User.js"
+import { MaterialDAO } from "../daos/Material.js"
 import BorrowDAO from "../daos/Borrow.js"
 
 
@@ -8,18 +8,18 @@ export default class BorroWController {
 
     create(bi, identifier) {
         try {
-            const userExists = UserRepository.find(users => users.bi === bi)
-            const materialExists = materials.find(materials => materials.identifier === identifier)
+            const userExists = UserDAO.index().find(users => users.bi === bi)
+            const bookExists = MaterialDAO.findBooks().find(book => book.identifier == identifier)
 
-
-            if (userExists && materialExists) {
-                materialExists.amount -= 1;
-                materialExists.borrowed += 1;
+            if (userExists && bookExists) {
+                bookExists.amount -= 1;
+                bookExists.borrowed += 1;
 
                 const borrow = {
                     user: userExists,
-                    borrow: materialExists
+                    borrow: bookExists
                 }
+
                 const barrow = BorrowDAO.create(borrow)
                 return barrow
 
@@ -36,7 +36,7 @@ export default class BorroWController {
 
 
 
-        const users = UserRepository
+        const users = UserDAO.index()
         const materials = MaterialDAO.findBooks()
 
         return { users, materials }
@@ -46,7 +46,7 @@ export default class BorroWController {
 
     listUsersAndBooks() {
 
-        const users = UserRepository
+        const users = UserDAO.index()
         const materials = MaterialDAO.findBooks()
 
 

@@ -10,12 +10,8 @@ routes.post("/create", (request, response) => {
 
     borrowController.create(bi, identifier)
 
-    const borrows = borrowController.index()
 
-
-    const { materials, users } = borrowController.listUsersAndBooks()
-
-    response.render("solicitar_livro.html", { users, materials, borrows })
+    response.redirect("/borrow/create")
 
 
 })
