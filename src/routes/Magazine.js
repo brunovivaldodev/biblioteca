@@ -5,8 +5,8 @@ const routes = Router()
 const magazineController = new MagazineController()
 
 routes.post("/create", (request, response) => {
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency } = request.body
-    magazineController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency)
+    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author } = request.body
+    magazineController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author)
     response.redirect("/magazine/create")
 })
 
@@ -33,14 +33,14 @@ routes.get("/editar/:id", (request, response) => {
 
 routes.post("/editar/:id", (request, response) => {
 
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency } = request.body
+    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author } = request.body
     const { id } = request.params
 
     const item = magazineController.findMagazine(id)
 
     if (item) {
 
-        magazineController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency);
+        magazineController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author);
 
     }
 

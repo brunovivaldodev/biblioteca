@@ -20,6 +20,8 @@ routes.get("/create", (request, response) => {
 
     const borrows = borrowController.index()
 
+    console.log("dsds", borrows)
+
     response.render("solicitar_livro.html", { users, materials, borrows })
 
 })

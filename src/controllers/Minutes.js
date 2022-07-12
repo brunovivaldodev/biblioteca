@@ -1,9 +1,9 @@
 import MaterialDAO from "../daos/Material.js"
 
 export default class MinutesController {
-    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
+    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author) {
 
-        const minute = MaterialDAO.storeMinutes(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName)
+        const minute = MaterialDAO.storeMinutes(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author)
 
         return minute
     }
@@ -19,9 +19,9 @@ export default class MinutesController {
     }
 
 
-    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
+    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author) {
 
-        const minute = MaterialDAO.updateMinute(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName)
+        const minute = MaterialDAO.updateMinute(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author)
 
         return minute;
 

@@ -3,15 +3,15 @@ import Magazine from "../models/Magazine.js"
 import Minutes from "../models/Minutes.js"
 
 let materials = [
-    new Book(1, "Codigo Limpo", "2022-03", "2011-04", 12, 16, 34, "Child"),
-    new Book(2, "Arquitectura Limpa", "2022-03", "2011-04", 12, 16, 34, "Child")
+    new Book(1, "Codigo Limpo", "2022-03", "2011-04", 12, 50, 34, "Child", "Uncle Bob"),
+    new Book(2, "Arquitectura Limpa", "2022-03", "2011-04", 12, 50, 34, "Child", "José Pedro")
 ]
 
 export default class MaterialDAO {
     static count = 2;
 
-    static storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
-        const book = new Book(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, Number(amount), Number(borrowed), gender)
+    static storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author) {
+        const book = new Book(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, Number(amount), Number(borrowed), gender, author)
         materials.push(book)
         this.count++
         return book
@@ -52,7 +52,7 @@ export default class MaterialDAO {
     }
 
 
-    static updateBook(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
+    static updateBook(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author) {
 
 
         const bookExists = this.findBooks().find(book => book.identifier == identifier)
@@ -65,11 +65,12 @@ export default class MaterialDAO {
             bookExists.title = title
             bookExists.yearOfArrival = yearOfArrival
             bookExists.yearOfPublication = yearOfPublication
+            bookExists.author = author
         }
         return bookExists
     }
 
-    static updateMagazine(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
+    static updateMagazine(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author) {
 
         const magazineExists = this.findMagazines().find(book => book.identifier == identifier)
 
@@ -81,13 +82,14 @@ export default class MaterialDAO {
             magazineExists.title = title
             magazineExists.yearOfArrival = yearOfArrival
             magazineExists.yearOfPublication = yearOfPublication
+            magazineExists.author = author
         }
 
         return magazineExists
     }
 
-    static storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
-        const magazine = new Magazine(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency)
+    static storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author) {
+        const magazine = new Magazine(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author)
         materials.push(magazine)
         this.count++
 
@@ -109,8 +111,8 @@ export default class MaterialDAO {
     }
 
 
-    static storeMinutes(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
-        const minutes = new Minutes(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName)
+    static storeMinutes(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author) {
+        const minutes = new Minutes(this.count + 1, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author)
         materials.push(minutes)
         this.count++
         return minutes
@@ -122,7 +124,7 @@ export default class MaterialDAO {
         return minutes
     }
 
-    static updateMinute(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName) {
+    static updateMinute(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author) {
 
         const minuteExists = this.findMinutes().find(minute => minute.identifier == identifier)
 
@@ -135,6 +137,7 @@ export default class MaterialDAO {
             minuteExists.title = title
             minuteExists.yearOfArrival = yearOfArrival
             minuteExists.yearOfPublication = yearOfPublication
+            minuteExists.author = author
         }
 
         return minuteExists

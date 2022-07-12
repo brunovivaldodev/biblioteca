@@ -1,9 +1,9 @@
 import MaterialDAO from "../daos/Material.js"
 
 export default class MagazineController {
-    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
+    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author) {
 
-        const magazine = MaterialDAO.storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency)
+        const magazine = MaterialDAO.storeMagazine(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author)
 
         return magazine
     }
@@ -18,9 +18,9 @@ export default class MagazineController {
         return minutes
     }
 
-    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency) {
+    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author) {
 
-        const minute = MaterialDAO.updateMagazine(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency)
+        const minute = MaterialDAO.updateMagazine(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, publicationFrequency, author)
 
         return minute;
 

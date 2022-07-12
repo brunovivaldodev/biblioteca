@@ -1,16 +1,16 @@
 import MaterialDAO from "../daos/Material.js"
 
 export default class BookController {
-    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
+    create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author) {
 
-        const book = MaterialDAO.storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
+        const book = MaterialDAO.storeBook(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author)
 
         return book
     }
 
-    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender) {
+    update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author) {
 
-        const book = MaterialDAO.updateBook(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
+        const book = MaterialDAO.updateBook(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author)
 
         return book;
 

@@ -5,8 +5,8 @@ const routes = Router()
 const bookController = new BookController()
 
 routes.post("/create", (request, response) => {
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender } = request.body
-    bookController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender)
+    const { title, author, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender } = request.body
+    bookController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author)
     response.redirect("/book/create")
 })
 
@@ -37,14 +37,14 @@ routes.get("/editar/:id", (request, response) => {
 
 routes.post("/editar/:id", (request, response) => {
 
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender } = request.body
+    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author } = request.body
     const { id } = request.params
 
     const item = bookController.findBook(id)
 
     if (item) {
 
-        bookController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender);
+        bookController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, gender, author);
 
     }
     response.redirect("/book/create")

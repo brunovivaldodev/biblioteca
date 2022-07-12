@@ -5,8 +5,8 @@ const routes = Router()
 const minutesController = new MinutesController()
 
 routes.post("/create", (request, response) => {
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName } = request.body
-    const t = minutesController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName)
+    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author } = request.body
+    const t = minutesController.create(title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author)
     response.redirect("/minutes/create")
 })
 
@@ -32,14 +32,14 @@ routes.get("/editar/:id", (request, response) => {
 
 routes.post("/editar/:id", (request, response) => {
 
-    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName } = request.body
+    const { title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author } = request.body
     const { id } = request.params
 
     const item = minutesController.findMinute(id)
 
     if (item) {
 
-        minutesController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName);
+        minutesController.update(id, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author);
 
     }
 
