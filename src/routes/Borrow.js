@@ -28,5 +28,52 @@ routes.get("/create", (request, response) => {
 })
 
 
+routes.get("/editar/:id", (request, response) => {
+
+    const { id } = request.params
+
+    const borrow = borrowController.findBorrow(id)
+
+    const { materials, users } = borrowController.listUsersAndBooks()
+    response.render("edit_barrow.html", { users, materials, borrow })
+
+})
+
+
+routes.post("/editar/:id", (request, response) => {
+
+    const { identifier, bi, amount } = request.body
+    const { id } = request.params
+
+
+
+    const item = borrowController.findBorrow(id)
+
+    if (item) {
+
+        borrowController.update(id, bi, identifier, amount);
+
+    }
+    response.redirect("/borrow/create")
+
+})
+
+
+routes.post("/delete", (req, res) => {
+    const { id } = req.body
+
+
+
+    borrowController.delete(id)
+
+    const { materials, users } = borrowController.listUsersAndBooks()
+
+    const borrows = borrowController.index()
+
+    res.render("solicitar_livro.html", { users, materials, borrows })
+})
+
+
+
 
 export default routes

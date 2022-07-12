@@ -7,29 +7,12 @@ import BorrowDAO from "../daos/Borrow.js"
 export default class BorroWController {
 
     create(bi, identifier, amount) {
-        try {
-            const userExists = UserDAO.index().find(users => users.bi === bi)
-            const bookExists = MaterialDAO.findBooks().find(book => book.identifier == identifier)
 
-            if (userExists && bookExists) {
+        const barrow = BorrowDAO.create(bi, identifier, amount)
+        return barrow
 
-                const borrow = {
-                    user: userExists,
-                    borrow: bookExists,
-                    amount: Number(amount)
-                }
-
-                const barrow = BorrowDAO.create(borrow)
-                return barrow
-
-            }
-
-
-        }
-        catch (error) {
-            console.log(error)
-        }
     }
+
 
     index() {
         return BorrowDAO.index()
@@ -43,6 +26,27 @@ export default class BorroWController {
 
 
         return { users, materials }
+    }
+
+
+    update(id, bi, identifier, amount) {
+
+        const borrow = BorrowDAO.update(id, bi, identifier, amount)
+
+        return borrow;
+
+    }
+
+
+    findBorrow(id) {
+        const borrow = BorrowDAO.findBorrow(id)
+        return borrow
+    }
+
+
+    delete(id) {
+        const borrow = BorrowDAO.delete(id)
+        return borrow
     }
 
 }
