@@ -33,54 +33,9 @@
         <h1>Bem Vindo A Biblioteca Isptec</h1>
         <div class="wrapper">
             <div class="label-register">
-                <p>Solicitar Livro</p>
+                <p>Emprestar Material</p>
             </div>
-            <div class="div-register">
-                <form action="http://localhost:3000/borrow/create" method="post" name="frm-register">
-                    <table id="tbl-register">
-                        <tr>
-                            <td>Usuários</td>
-                            <td>
-                                <select name="bi" id="users">
-                                    {% for user in users%}
-                                    <option value="{{user.bi}}">{{user.name}}-{{user.bi}}</option>
-                                    {% endfor%}
 
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Livros</td>
-                            <td>
-                                <select name="identifier" id="users">
-                                    {% for material in materials%}
-                                    <option value="{{material.identifier}}">{{material.identifier}}-{{material.title}}
-                                    </option>
-                                    {% endfor%}
-
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Quantidade<span>*</span></td>
-                            <td>
-                                <input type="number" name="amount" id="title" placeholder="Digite a quantidade" />
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button type="submit" name="register"> Register
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
             <hr />
             <p class="label-result">Lista De Solicitações</p>
             <div class="div-result">
@@ -106,7 +61,7 @@
                             <td>{{item.material.identifier}}</td>
                             <td>{{item.material.title}}</td>
                             <td>{{item.amount}}</td>
-                            <th><a href="http://localhost:3000/borrow/editar/{{item.identifier}}">Editar</a>
+                            <th><a href="http://localhost:3000/borrow/loan/{{item.identifier}}">Emprestar</a>
                             </th>
                             <th> <button form="delete" value="{{item.identifier}}" name="id"
                                     type="submit">delete</button></th>
