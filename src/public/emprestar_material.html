@@ -12,8 +12,12 @@
 
 <body class="main">
 
-    <form hidden action="http://localhost:3000/borrow/delete" method="post" name="delete" id="delete">
+    <form hidden action="http://localhost:3000/borrow/delete" method="post" id="delete">
     </form>
+
+    <form hidden method="post" id="loan">
+    </form>
+
 
     <aside>
         <nav class="nav">
@@ -61,10 +65,12 @@
                             <td>{{item.material.identifier}}</td>
                             <td>{{item.material.title}}</td>
                             <td>{{item.amount}}</td>
-                            <th><a href="http://localhost:3000/borrow/loan/{{item.identifier}}">Emprestar</a>
+                            <th>
+                                <button form="loan" value="{{item.identifier}}" name="id" type="submit"
+                                    formaction="http://localhost:3000/borrow/loan/{{item.identifier}}">Emprestar</button>
                             </th>
                             <th> <button form="delete" value="{{item.identifier}}" name="id"
-                                    type="submit">delete</button></th>
+                                    type="submit">delete</button> </th>
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -8,10 +8,7 @@ routes.post("/create", (request, response) => {
 
     const { identifier, bi, amount } = request.body
 
-
-
     borrowController.create(bi, identifier, amount)
-
 
     response.redirect("/borrow/create")
 
@@ -24,6 +21,26 @@ routes.get("/create", (request, response) => {
     const borrows = borrowController.index()
 
     response.render("solicitar_livro.html", { users, materials, borrows })
+
+})
+
+
+routes.get("/loan", (request, response) => {
+
+    const borrows = borrowController.index()
+
+    response.render("emprestar_material.html", { borrows })
+
+})
+
+routes.post("/loan/:id", (request, response) => {
+
+    const { id } = request.body
+
+
+    const borrows = borrowController.loan(id)
+
+    response.render("emprestar_material.html", { borrows })
 
 })
 

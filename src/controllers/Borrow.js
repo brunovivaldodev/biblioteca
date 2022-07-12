@@ -1,5 +1,5 @@
 
-import { UserDAO } from "../daos/User.js"
+import UserDAO from "../daos/User.js"
 import { MaterialDAO } from "../daos/Material.js"
 import BorrowDAO from "../daos/Borrow.js"
 
@@ -16,6 +16,10 @@ export default class BorroWController {
 
     index() {
         return BorrowDAO.index()
+    }
+
+    loan(id) {
+        return BorrowDAO.loan(id)
     }
 
 
