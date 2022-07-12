@@ -6,18 +6,17 @@ import BorrowDAO from "../daos/Borrow.js"
 
 export default class BorroWController {
 
-    create(bi, identifier) {
+    create(bi, identifier, amount) {
         try {
             const userExists = UserDAO.index().find(users => users.bi === bi)
             const bookExists = MaterialDAO.findBooks().find(book => book.identifier == identifier)
 
             if (userExists && bookExists) {
-                bookExists.amount -= 1;
-                bookExists.borrowed += 1;
 
                 const borrow = {
                     user: userExists,
-                    borrow: bookExists
+                    borrow: bookExists,
+                    amount: Number(amount)
                 }
 
                 const barrow = BorrowDAO.create(borrow)

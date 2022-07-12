@@ -6,9 +6,11 @@ const borrowController = new BorrowController()
 
 routes.post("/create", (request, response) => {
 
-    const { identifier, bi } = request.body
+    const { identifier, bi, amount } = request.body
 
-    borrowController.create(bi, identifier)
+
+
+    borrowController.create(bi, identifier, amount)
 
 
     response.redirect("/borrow/create")
