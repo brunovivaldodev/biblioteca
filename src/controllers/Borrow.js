@@ -32,14 +32,7 @@ export default class BorroWController {
     }
 
     index() {
-
-
-
-        const users = UserDAO.index()
-        const materials = MaterialDAO.findBooks()
-
-        return { users, materials }
-
+        return BorrowDAO.index()
     }
 
 

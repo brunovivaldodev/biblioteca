@@ -82,7 +82,7 @@
                 </form>
             </div>
             <hr />
-            <p class="label-result">Lista De Usuários</p>
+            <p class="label-result">Lista De Solicitações</p>
             <div class="div-result">
                 <table class="tbl-result" id="tbl-result">
                     <thead>
@@ -90,17 +90,24 @@
                             <th>No</th>
                             <th>Nome</th>
                             <th>Cartão De Identidade</th>
-                            <th>Endereço</th>
+                            <th>Identificador Do Livro</th>
+                            <th>Titulo</th>
+                            <th>Quantidade</th>
+
                         </tr>
                     </thead>
 
                     <tbody>
-                        {% for item in data %}
+                        {% for item in borrows %}
                         <tr>
                             <td>{{loop.index}}</td>
-                            <td>{{item.name}}</td>
-                            <td>{{item.bi}}</td>
-                            <td>{{item.address}}</td>
+                            <td>{{item.user.name}}</td>
+                            <td>{{item.user.bi}}</td>
+                            <td>{{item.borrow.identifier}}</td>
+                            <td>{{item.borrow.title}}</td>
+                            <td>{{item.amount}}</td>
+                            <th><a href="http://localhost:3000/users/editar/{{item.identifier}}">Editar</a>
+                            </th>
                             <th> <button form="delete" value="{{item.identifier}}" name="id"
                                     type="submit">delete</button></th>
                         </tr>
