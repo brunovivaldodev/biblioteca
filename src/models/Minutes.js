@@ -1,7 +1,7 @@
 import Material from "./Material.js"
 
 export default class Minutes extends Material {
-    constructor(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed,congressName) {
+    constructor(identifier, title, yearOfPublication, yearOfArrival, editorial, amount, borrowed, congressName, author) {
         super()
         this.identifier = identifier,
             this.title = title,
@@ -9,13 +9,15 @@ export default class Minutes extends Material {
             this.yearOfArrival = yearOfArrival,
             this.editorial = editorial,
             this.amount = amount,
-            this.borrowed = borrowed
-            this.congressName = congressName
+            this.borrowed = borrowed,
+            this.congressName = congressName,
+            this.author = author
+
     }
 
-    calculate(){
-            this.tax = (this.yearOfPublication + 1) / this.yearOfArrival
-        
-}
+    calculate() {
+        this.tax = (this.yearOfPublication + 1) / this.yearOfArrival
+
+    }
 }
 
