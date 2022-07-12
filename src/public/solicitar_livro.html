@@ -100,13 +100,13 @@
                     <tbody>
                         {% for item in borrows %}
                         <tr>
-                            <td>{{loop.index}}</td>
+                            <td>{{item.identifier}}</td>
                             <td>{{item.user.name}}</td>
                             <td>{{item.user.bi}}</td>
-                            <td>{{item.borrow.identifier}}</td>
-                            <td>{{item.borrow.title}}</td>
+                            <td>{{item.material.identifier}}</td>
+                            <td>{{item.material.title}}</td>
                             <td>{{item.amount}}</td>
-                            <th><a href="http://localhost:3000/users/editar/{{item.identifier}}">Editar</a>
+                            <th><a href="http://localhost:3000/borrow/editar/{{item.identifier}}">Editar</a>
                             </th>
                             <th> <button form="delete" value="{{item.identifier}}" name="id"
                                     type="submit">delete</button></th>
