@@ -40,8 +40,22 @@
                 <p>Lista Dos Materias Emprestados</p>
             </div>
 
-            <hr />
-            <p class="label-result">Lista Dos Materias Emprestados</p>
+            <div>
+                <form action="http://localhost:3000/borrowed/filter" method="post" name="frm-register">
+                    <table id="tbl-register">
+                        <p>Pesquisar por Cartão Do Cliente </p>
+                        <tr>
+                            <td>
+                                <input type="text" name="amount" id="title" placeholder="Digite o cartão do cliente" />
+                                <button type="submit" name="register"> pesquisar
+                                </button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+            <hr>
             <div class="div-result">
                 <table class="tbl-result" id="tbl-result">
                     <thead>
