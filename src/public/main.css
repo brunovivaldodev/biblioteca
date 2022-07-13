@@ -105,3 +105,17 @@ table.tbl-result td {
 span {
     color: red;
 }
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+}
+
+.cards .card-item{
+    margin: 15px;
+}
+
+.cards .card-item .card-item-number{
+    text-align: center;
+}
