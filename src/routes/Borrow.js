@@ -20,8 +20,6 @@ routes.get("/create", (request, response) => {
 
     const borrows = borrowController.index()
 
-    console.log("dsds", borrows)
-
     response.render("solicitar_livro.html", { users, materials, borrows })
 
 })
@@ -34,6 +32,15 @@ routes.get("/loan", (request, response) => {
     response.render("emprestar_material.html", { borrows })
 
 })
+
+routes.get("/loan-list", (request, response) => {
+
+    const borrows = borrowController.borrowed()
+
+    response.render("lista_materias_emprestados.html", { borrows })
+
+})
+
 
 routes.post("/loan/:id", (request, response) => {
 

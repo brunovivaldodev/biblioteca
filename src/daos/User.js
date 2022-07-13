@@ -1,6 +1,10 @@
 import User from "../models/User.js";
 
-let users = []
+let users = [
+    new User(1, "Bruno Vivaldo", "2334", "Luanda"),
+    new User(2, "José Pedro", "1982", "Porto"),
+    new User(3, "Ricardo Castro", "1234", "Benfica")
+]
 export default class UserDAO {
 
     static count = 0;
@@ -49,5 +53,3 @@ export default class UserDAO {
     }
 
 }
-
-export { users }

@@ -23,6 +23,11 @@ export default class BorroWController {
     }
 
 
+    borrowed() {
+        return BorrowDAO.borrowed()
+    }
+
+
     listUsersAndBooks() {
 
         const users = UserDAO.index()

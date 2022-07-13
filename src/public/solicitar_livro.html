@@ -25,9 +25,11 @@
                 <li><a href="http://localhost:3000/minutes/create">Cadastrar Acta De Congresso</a></li>
                 <li><a href="http://localhost:3000/borrow/create">Solicitar Livro</a></li>
                 <li><a href="http://localhost:3000/borrow/loan">Emprestar Material</a></li>
+                <li><a href="http://localhost:3000/borrow/loan-list">Emprestados</a></li>
             </ul>
         </nav>
     </aside>
+
 
     <main>
         <h1>Bem Vindo A Biblioteca Isptec</h1>
@@ -82,6 +84,28 @@
                 </form>
             </div>
             <hr />
+            <div>
+                <form action="http://localhost:3000/borrow/filter" method="post" name="frm-register">
+                    <table id="tbl-register">
+                        Listar por :
+                        <tr>
+                            <td>
+                                <input type="radio" id="html" name="fav_language" value="Author">
+                                <label for="html">Autor</label><br>
+
+                                <input type="radio" id="html" name="fav_language" value="Titulo">
+                                <label for="html">Titulo</label><br>
+                            </td>
+                            <td>
+                                <input type="text" name="amount" id="title" placeholder="pesquise por ..." />
+                                <button type="submit" name="register"> pesquisar
+                                </button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
             <p class="label-result">Lista De Solicitações</p>
             <div class="div-result">
                 <table class="tbl-result" id="tbl-result">
@@ -92,7 +116,8 @@
                             <th>Cartão De Identidade</th>
                             <th>Identificador Do Livro</th>
                             <th>Titulo</th>
-                            <th>Quantidade</th>
+                            <th>Author</th>
+                            <th>Amount</th>
 
                         </tr>
                     </thead>
@@ -105,6 +130,7 @@
                             <td>{{item.user.bi}}</td>
                             <td>{{item.material.identifier}}</td>
                             <td>{{item.material.title}}</td>
+                            <td>{{item.material.author}}</td>
                             <td>{{item.amount}}</td>
                             <th><a href="http://localhost:3000/borrow/editar/{{item.identifier}}">Editar</a>
                             </th>

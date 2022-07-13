@@ -113,6 +113,10 @@ export default class BorrowDAO {
         return borrows
     }
 
+    static borrowed() {
+        return loans
+    }
+
 
 
     static index() {
