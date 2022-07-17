@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='http://localhost:3000/main.css'>
+</head>
+
+<body class="main">
+
+    <form hidden action="http://localhost:3000/borrow/delete" method="post" id="delete">
+    </form>
+
+    <form hidden method="post" id="loan">
+    </form>
+
+    <aside>
+        <nav class="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="http://localhost:3000/users/create">Cadastrar Usuário</a></li>
+                <li><a href="http://localhost:3000/book/create">Cadastrar Livro</a></li>
+                <li><a href="http://localhost:3000/magazine/create">Cadastrar Magazine</a></li>
+                <li><a href="http://localhost:3000/minutes/create">Cadastrar Acta De Congresso</a></li>
+                <li><a href="http://localhost:3000/borrow/create">Solicitar Revista</a></li>
+                <li><a href="http://localhost:3000/borrow/loan">Emprestar Material</a></li>
+                <li><a href="http://localhost:3000/borrow/loan-list">Emprestados</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+
+    <main>
+        <h1>Bem Vindo A Biblioteca Isptec</h1>
+        <div class="wrapper">
+            <div class="label-register">
+                <p>Emprestar Material</p>
+            </div>
+
+            <hr />
+            <p class="label-result">Lista De Solicitações</p>
+            <div class="div-result">
+                <table class="tbl-result" id="tbl-result">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nome</th>
+                            <th>Cartão De Identidade</th>
+                            <th>Identificador Do Livro</th>
+                            <th>Titulo</th>
+                            <th>Quantidade</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in borrows %}
+                        <tr>
+                            <td>{{item.identifier}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.bi}}</td>
+                            <td>{{item.material_id}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.amount}}</td>
+                            <th>
+                                <button form="loan" value="{{item.identifier}}" name="id" type="submit"
+                                    formaction="http://localhost:3000/borrow/loan/{{item.identifier}}">Emprestar</button>
+                            </th>
+                            <th> <button form="delete" value="{{item.identifier}}" name="id"
+                                    type="submit">delete</button> </th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

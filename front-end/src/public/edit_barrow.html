@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='http://localhost:3000/main.css'>
+</head>
+
+<body>
+    <div id="abrirModal" class="modal">
+        <div>
+            <a href="http://localhost:3000/book/create" title="Fechar" class="fechar">X</a>
+
+            <form action="http://localhost:3000/borrow/editar/{{borrow.identifier}}" method="post" name="frm-register">
+                <table id="tbl-register">
+                    <tr>
+                        <td>Usuários</td>
+                        <td>
+                            <select name="bi" id="users">
+                                {% for user in users%}
+                                <option value="{{user.bi}}">{{user.name}}-{{user.bi}}</option>
+                                {% endfor%}
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Livros</td>
+                        <td>
+                            <select name="identifier" id="users">
+                                {% for material in materials%}
+                                <option value="{{material.identifier}}">{{material.identifier}}-{{material.title}}
+                                </option>
+                                {% endfor%}
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Quantidade<span>*</span></td>
+                        <td>
+                            <input type="number" name="amount" id="title" value={{borrow.amount}} />
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" name="register"> Register
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
